@@ -1,17 +1,18 @@
 import Phaser from 'phaser';
-import tiles from "./assets/tiles.png";
+import tiles from './assets/tiles.png';
+import map from './assets/map.json';
 
 let previewScene;
 let previewIndex = 0;
 
 const tilesetConfig = {
-    type: Phaser.CANVAS,
+    type: Phaser.AUTO,
     parent: 'tileset',
     pixelArt: true,
     scale: {
         mode: Phaser.Scale.NONE,
         width: 64,
-        height: 64,
+        height: 65,
         zoom: 2
     },
     scene: {
@@ -27,30 +28,36 @@ function preloadTileset() {
 }
 
 function createTileset() {
-    const logo = this.add.image(32, 32, 'tiles');
+    let logo = this.add.sprite(32, 32, 'tiles');
     let button = document.getElementById('generate-button');
     button.addEventListener('click', () => {
-        console.log(this.sys.canvas.toDataURL());
+        logo.tint = 0xff0000;
         if (previewScene) {
-            previewIndex++;
-            let previewName = 'tiles' + previewIndex;
-            previewScene.textures.addBase64(previewName, this.sys.canvas.toDataURL());
-            setTimeout(() => {
-
-                console.log(previewScene.add.image(32, 32, previewName));
-                // destroy old textures
-            }, 500);
+            tileset.renderer.snapshot((image) => {
+                previewIndex++;
+                let previewName = 'tiles' + previewIndex;
+                previewScene.textures.addImage(previewName, image);
+                document.body.appendChild(image);
+                setTimeout(() => {
+                    previewScene.tiles.setImage(previewScene.textures.get(previewName));
+                    previewScene.logo.setTexture(previewName);
+                    // destroy old textures
+                    if (previewScene.textures.exists('tiles' + (previewIndex - 1))) {
+                        previewScene.textures.remove('tiles' + (previewIndex - 1));
+                    }
+                }, 500);
+            });
         }
     });
 }
 
 const previewConfig = {
-    type: Phaser.CANVAS,
+    type: Phaser.AUTO,
     parent: 'preview',
     pixelArt: true,
     scale: {
         mode: Phaser.Scale.NONE,
-        width: 128,
+        width: 160,
         height: 128,
         zoom: 2
     },
@@ -64,9 +71,13 @@ const preview = new Phaser.Game(previewConfig);
 
 function preloadPreview() {
     previewScene = this;
-    //this.load.image('tiles', tiles);
+    this.load.image('tiles', tiles);
+    this.load.tilemapTiledJSON('map', map);
 }
 
 function createPreview() {
-    //const logo = this.add.image(32, 32, 'tiles');
+    this.map = this.make.tilemap({ key: 'map' });
+    this.tiles = this.map.addTilesetImage('tiles', 'tiles');
+    this.layer = this.map.createDynamicLayer(0, this.tiles, 0, 0);
+    this.logo = this.add.image(32, 32, 'tiles');
 }
