@@ -1,0 +1,19 @@
+{
+  "name": "random-tileset-generator",
+  "version": "0.0.1",
+  "description": "Generate 8x8 tilesets",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Quinten/random-tileset-generator.git"
+  },
+  "author": "Quinten Clause",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Quinten/random-tileset-generator/issues"
+  },
+  "homepage": "https://github.com/Quinten/random-tileset-generator#readme"
+}
