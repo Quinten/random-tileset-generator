@@ -35,12 +35,17 @@ function preloadTileset() {
     options.checkeredbg.forEach((key) => {
         this.load.image(key, 'assets/' + key + '.png');
     });
+    options.topping.forEach((key) => {
+        this.load.image(key, 'assets/' + key + '.png');
+    });
 }
 
 function createTileset() {
     this.bg = this.add.image(32, 32, 'plainbg');
     this.solidbg = this.add.image(32, 32, options.solidbg[0]);
     this.checkeredbg = this.add.image(32, 32, options.checkeredbg[0]);
+    this.topping = this.add.image(32, 32, options.topping[0]);
+
     let button = document.getElementById('generate-button');
     button.addEventListener('click', () => {
         let bgColor = Math.floor(Math.random() * 0xffffff);
@@ -49,6 +54,9 @@ function createTileset() {
         this.checkeredbg.tint = bgColor;
         this.solidbg.setTexture(options.solidbg[Math.floor(Math.random() * options.solidbg.length)]);
         this.solidbg.tint = Math.floor(Math.random() * 0xffffff);
+        this.topping.setTexture(options.topping[Math.floor(Math.random() * options.topping.length)]);
+        this.topping.tint = Math.floor(Math.random() * 0xffffff);
+
         if (previewScene) {
             tileset.renderer.snapshot((image) => {
                 cropContext.drawImage(image, 0, -1);

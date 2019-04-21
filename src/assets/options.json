@@ -7,5 +7,9 @@
     "bricks",
     "vbrickcheckeredbg",
     "upbrickscheckeredbg"
+  ],
+  "topping": [
+    "simpletopping",
+    "boxtopping"
   ]
 }
