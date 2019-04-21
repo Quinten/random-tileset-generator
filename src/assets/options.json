@@ -1,9 +1,10 @@
 {
   "solidbg": [
-    "plainsolidbg",
+    "acidsolidbg",
     "voidsolidbg"
   ],
   "checkeredbg": [
+    "bricks",
     "vbrickcheckeredbg",
     "upbrickscheckeredbg"
   ]
