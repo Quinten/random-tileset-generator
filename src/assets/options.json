@@ -2,7 +2,8 @@
   "checkeredbg": [
     "bricks",
     "vbrickcheckeredbg",
-    "upbrickscheckeredbg"
+    "upbrickscheckeredbg",
+    "swirlcheckeredbg"
   ],
   "advanced": [
     "acidadvanced",
