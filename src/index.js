@@ -1,6 +1,4 @@
 import Phaser from 'phaser';
-import tiles from './assets/tiles.png';
-import map from './assets/map.json';
 
 let previewScene;
 let previewIndex = 0;
@@ -28,14 +26,17 @@ const tilesetConfig = {
 const tileset = new Phaser.Game(tilesetConfig);
 
 function preloadTileset() {
-    this.load.image('tiles', tiles);
+    this.load.image('plainbg', 'assets/plainbg.png');
+    this.load.image('plainfg', 'assets/plainfg.png');
 }
 
 function createTileset() {
-    let logo = this.add.sprite(32, 32, 'tiles');
+    this.bg = this.add.image(32, 32, 'plainbg');
+    this.fg = this.add.image(32, 32, 'plainfg');
     let button = document.getElementById('generate-button');
     button.addEventListener('click', () => {
-        logo.tint = Math.floor(Math.random() * 0xffffff);
+        this.bg.tint = Math.floor(Math.random() * 0xffffff);
+        this.fg.tint = Math.floor(Math.random() * 0xffffff);
         if (previewScene) {
             tileset.renderer.snapshot((image) => {
                 cropContext.drawImage(image, 0, -1);
@@ -48,7 +49,6 @@ function createTileset() {
                 document.getElementById('export-button').setAttribute('href', data);
                 setTimeout(() => {
                     previewScene.tiles.setImage(previewScene.textures.get(previewName));
-                    //previewScene.logo.setTexture(previewName);
                     // destroy old textures
                     if (previewScene.textures.exists('tiles' + (previewIndex - 1))) {
                         previewScene.textures.remove('tiles' + (previewIndex - 1));
@@ -79,13 +79,12 @@ const preview = new Phaser.Game(previewConfig);
 
 function preloadPreview() {
     previewScene = this;
-    this.load.image('tiles', tiles);
-    this.load.tilemapTiledJSON('map', map);
+    this.load.image('tiles', 'assets/tiles.png');
+    this.load.tilemapTiledJSON('map', 'assets/map.json');
 }
 
 function createPreview() {
     this.map = this.make.tilemap({ key: 'map' });
     this.tiles = this.map.addTilesetImage('tiles', 'tiles');
     this.layer = this.map.createDynamicLayer(0, this.tiles, 0, 0);
-    //this.logo = this.add.image(32, 32, 'tiles');
 }

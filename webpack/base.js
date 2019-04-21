@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     mode: 'development',
@@ -35,6 +36,9 @@ module.exports = {
         new CleanWebpackPlugin(['pub'], {
             root: path.resolve(__dirname, '../')
         }),
+        new CopyPlugin([
+            { from: 'src/assets', to: 'assets' },
+        ]),
         new webpack.DefinePlugin({
             CANVAS_RENDERER: JSON.stringify(true),
             WEBGL_RENDERER: JSON.stringify(true)
