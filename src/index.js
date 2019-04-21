@@ -32,6 +32,12 @@ function preloadTileset() {
     options.solidbg.forEach((key) => {
         this.load.image(key, 'assets/' + key + '.png');
     });
+    options.checkeredfill.forEach((key) => {
+        this.load.image(key, 'assets/' + key + '.png');
+    });
+    options.randomfill.forEach((key) => {
+        this.load.image(key, 'assets/' + key + '.png');
+    });
     options.checkeredbg.forEach((key) => {
         this.load.image(key, 'assets/' + key + '.png');
     });
@@ -42,8 +48,10 @@ function preloadTileset() {
 
 function createTileset() {
     this.bg = this.add.image(32, 32, 'plainbg');
-    this.solidbg = this.add.image(32, 32, options.solidbg[0]);
     this.checkeredbg = this.add.image(32, 32, options.checkeredbg[0]);
+    this.solidbg = this.add.image(32, 32, options.solidbg[0]);
+    this.checkeredfill = this.add.image(32, 32, options.checkeredfill[0]);
+    this.randomfill = this.add.image(32, 32, options.randomfill[0]);
     this.topping = this.add.image(32, 32, options.topping[0]);
 
     let button = document.getElementById('generate-button');
@@ -57,6 +65,10 @@ function createTileset() {
         this.checkeredbg.tint = bgColor;
         this.solidbg.setTexture(options.solidbg[Math.floor(Math.random() * options.solidbg.length)]);
         this.solidbg.tint = solidColor;
+        this.checkeredfill.setTexture(options.checkeredfill[Math.floor(Math.random() * options.checkeredfill.length)]);
+        this.checkeredfill.tint = solidColor;
+        this.randomfill.setTexture(options.randomfill[Math.floor(Math.random() * options.randomfill.length)]);
+        this.randomfill.tint = solidColor;
         this.topping.setTexture(options.topping[Math.floor(Math.random() * options.topping.length)]);
         this.topping.tint = topColor;;
 

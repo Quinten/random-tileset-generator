@@ -4,6 +4,14 @@
     "groundsolidbg",
     "voidsolidbg"
   ],
+  "checkeredfill": [
+    "albertcheckeredfill",
+    "tildacheckeredfill"
+  ],
+  "randomfill": [
+    "albertrandomfill",
+    "tildarandomfill"
+  ],
   "checkeredbg": [
     "bricks",
     "vbrickcheckeredbg",
