@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import options from './assets/options.json';
 
 let previewScene;
 let previewIndex = 0;
@@ -27,16 +28,20 @@ const tileset = new Phaser.Game(tilesetConfig);
 
 function preloadTileset() {
     this.load.image('plainbg', 'assets/plainbg.png');
-    this.load.image('plainfg', 'assets/plainfg.png');
+    //this.load.image('plainfg', 'assets/plainfg.png');
+    options.solidbg.forEach((key) => {
+        this.load.image(key, 'assets/' + key + '.png');
+    });
 }
 
 function createTileset() {
     this.bg = this.add.image(32, 32, 'plainbg');
-    this.fg = this.add.image(32, 32, 'plainfg');
+    this.solidbg = this.add.image(32, 32, options.solidbg[0]);
     let button = document.getElementById('generate-button');
     button.addEventListener('click', () => {
         this.bg.tint = Math.floor(Math.random() * 0xffffff);
-        this.fg.tint = Math.floor(Math.random() * 0xffffff);
+        this.solidbg.setTexture(options.solidbg[Math.floor(Math.random() * options.solidbg.length)]);
+        this.solidbg.tint = Math.floor(Math.random() * 0xffffff);
         if (previewScene) {
             tileset.renderer.snapshot((image) => {
                 cropContext.drawImage(image, 0, -1);
