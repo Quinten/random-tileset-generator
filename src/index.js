@@ -48,14 +48,17 @@ function createTileset() {
 
     let button = document.getElementById('generate-button');
     button.addEventListener('click', () => {
-        let bgColor = Math.floor(Math.random() * 0xffffff);
+        let palette = options.colors[Math.floor(Math.random() * options.colors.length)].split('-');
+        let bgColor = Number('0x' + palette.splice(Math.floor(Math.random() * palette.length), 1));
+        let solidColor = Number('0x' + palette.splice(Math.floor(Math.random() * palette.length), 1));
+        let topColor = Number('0x' + palette.splice(Math.floor(Math.random() * palette.length), 1));
         this.bg.tint = bgColor;
         this.checkeredbg.setTexture(options.checkeredbg[Math.floor(Math.random() * options.checkeredbg.length)]);
         this.checkeredbg.tint = bgColor;
         this.solidbg.setTexture(options.solidbg[Math.floor(Math.random() * options.solidbg.length)]);
-        this.solidbg.tint = Math.floor(Math.random() * 0xffffff);
+        this.solidbg.tint = solidColor;
         this.topping.setTexture(options.topping[Math.floor(Math.random() * options.topping.length)]);
-        this.topping.tint = Math.floor(Math.random() * 0xffffff);
+        this.topping.tint = topColor;;
 
         if (previewScene) {
             tileset.renderer.snapshot((image) => {
