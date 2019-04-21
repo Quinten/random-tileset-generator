@@ -42,8 +42,10 @@ function createTileset() {
                 previewIndex++;
                 let previewName = 'tiles' + previewIndex;
                 //previewScene.textures.addImage(previewName, image);
-                previewScene.textures.addBase64(previewName, crop.toDataURL());
+                let data = crop.toDataURL();
+                previewScene.textures.addBase64(previewName, data);
                 //document.body.appendChild(image);
+                document.getElementById('export-button').setAttribute('href', data);
                 setTimeout(() => {
                     previewScene.tiles.setImage(previewScene.textures.get(previewName));
                     //previewScene.logo.setTexture(previewName);
