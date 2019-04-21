@@ -32,14 +32,21 @@ function preloadTileset() {
     options.solidbg.forEach((key) => {
         this.load.image(key, 'assets/' + key + '.png');
     });
+    options.checkeredbg.forEach((key) => {
+        this.load.image(key, 'assets/' + key + '.png');
+    });
 }
 
 function createTileset() {
     this.bg = this.add.image(32, 32, 'plainbg');
     this.solidbg = this.add.image(32, 32, options.solidbg[0]);
+    this.checkeredbg = this.add.image(32, 32, options.checkeredbg[0]);
     let button = document.getElementById('generate-button');
     button.addEventListener('click', () => {
-        this.bg.tint = Math.floor(Math.random() * 0xffffff);
+        let bgColor = Math.floor(Math.random() * 0xffffff);
+        this.bg.tint = bgColor;
+        this.checkeredbg.setTexture(options.checkeredbg[Math.floor(Math.random() * options.checkeredbg.length)]);
+        this.checkeredbg.tint = bgColor;
         this.solidbg.setTexture(options.solidbg[Math.floor(Math.random() * options.solidbg.length)]);
         this.solidbg.tint = Math.floor(Math.random() * 0xffffff);
         if (previewScene) {

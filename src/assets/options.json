@@ -2,5 +2,9 @@
   "solidbg": [
     "plainsolidbg",
     "voidsolidbg"
+  ],
+  "checkeredbg": [
+    "vbrickcheckeredbg",
+    "upbrickscheckeredbg"
   ]
 }
