@@ -29,48 +29,46 @@ const tileset = new Phaser.Game(tilesetConfig);
 function preloadTileset() {
     this.load.image('plainbg', 'assets/plainbg.png');
     //this.load.image('plainfg', 'assets/plainfg.png');
-    options.solidbg.forEach((key) => {
-        this.load.image(key, 'assets/' + key + '.png');
-    });
-    options.checkeredfill.forEach((key) => {
-        this.load.image(key, 'assets/' + key + '.png');
-    });
-    options.randomfill.forEach((key) => {
-        this.load.image(key, 'assets/' + key + '.png');
-    });
-    options.checkeredbg.forEach((key) => {
-        this.load.image(key, 'assets/' + key + '.png');
-    });
-    options.topping.forEach((key) => {
-        this.load.image(key, 'assets/' + key + '.png');
+    Object.keys(options).forEach((option) => {
+        if (option !== 'colors') {
+            options[option].forEach((key) => {
+                this.load.image(key, 'assets/' + key + '.png');
+            });
+        }
     });
 }
 
 function createTileset() {
     this.bg = this.add.image(32, 32, 'plainbg');
-    this.checkeredbg = this.add.image(32, 32, options.checkeredbg[0]);
-    this.solidbg = this.add.image(32, 32, options.solidbg[0]);
-    this.checkeredfill = this.add.image(32, 32, options.checkeredfill[0]);
-    this.randomfill = this.add.image(32, 32, options.randomfill[0]);
-    this.topping = this.add.image(32, 32, options.topping[0]);
+    Object.keys(options).forEach((option) => {
+        if (option !== 'colors') {
+            options[option].forEach((key) => {
+                this[option] = this.add.image(32, 32, options[option][0]);
+            });
+        }
+    });
 
     let button = document.getElementById('generate-button');
     button.addEventListener('click', () => {
         let palette = options.colors[Math.floor(Math.random() * options.colors.length)].split('-');
         let bgColor = Number('0x' + palette.splice(Math.floor(Math.random() * palette.length), 1));
+        let easyColor = Number('0x' + palette.splice(Math.floor(Math.random() * palette.length), 1));
         let solidColor = Number('0x' + palette.splice(Math.floor(Math.random() * palette.length), 1));
         let topColor = Number('0x' + palette.splice(Math.floor(Math.random() * palette.length), 1));
+        let randomColor = Number('0x' + palette.splice(Math.floor(Math.random() * palette.length), 1));
         this.bg.tint = bgColor;
         this.checkeredbg.setTexture(options.checkeredbg[Math.floor(Math.random() * options.checkeredbg.length)]);
         this.checkeredbg.tint = bgColor;
-        this.solidbg.setTexture(options.solidbg[Math.floor(Math.random() * options.solidbg.length)]);
-        this.solidbg.tint = solidColor;
+        this.advanced.setTexture(options.advanced[Math.floor(Math.random() * options.advanced.length)]);
+        this.advanced.tint = solidColor;
+        this.easy.setTexture(options.easy[Math.floor(Math.random() * options.easy.length)]);
+        this.easy.tint = easyColor;
         this.checkeredfill.setTexture(options.checkeredfill[Math.floor(Math.random() * options.checkeredfill.length)]);
         this.checkeredfill.tint = solidColor;
         this.randomfill.setTexture(options.randomfill[Math.floor(Math.random() * options.randomfill.length)]);
-        this.randomfill.tint = solidColor;
+        this.randomfill.tint = randomColor;
         this.topping.setTexture(options.topping[Math.floor(Math.random() * options.topping.length)]);
-        this.topping.tint = topColor;;
+        this.topping.tint = topColor;
 
         if (previewScene) {
             tileset.renderer.snapshot((image) => {

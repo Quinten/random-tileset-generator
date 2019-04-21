@@ -1,8 +1,19 @@
 {
-  "solidbg": [
-    "acidsolidbg",
-    "groundsolidbg",
-    "voidsolidbg"
+  "checkeredbg": [
+    "bricks",
+    "vbrickcheckeredbg",
+    "upbrickscheckeredbg"
+  ],
+  "advanced": [
+    "acidadvanced",
+    "groundadvanced",
+    "voidadvanced"
+  ],
+  "easy": [
+    "basiceasy",
+    "acideasy",
+    "groundeasy",
+    "voideasy"
   ],
   "checkeredfill": [
     "albertcheckeredfill",
@@ -12,13 +23,7 @@
     "albertrandomfill",
     "tildarandomfill"
   ],
-  "checkeredbg": [
-    "bricks",
-    "vbrickcheckeredbg",
-    "upbrickscheckeredbg"
-  ],
   "topping": [
-    "simpletopping",
     "boxtopping"
   ],
   "colors": [
