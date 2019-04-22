@@ -59,6 +59,8 @@ function createTileset() {
         this.bg.tint = bgColor;
         this.checkeredbg.setTexture(options.checkeredbg[Math.floor(Math.random() * options.checkeredbg.length)]);
         this.checkeredbg.tint = bgColor;
+        this.randombg.setTexture(options.randombg[Math.floor(Math.random() * options.randombg.length)]);
+        this.randombg.tint = bgColor;
         this.advanced.setTexture(options.advanced[Math.floor(Math.random() * options.advanced.length)]);
         this.advanced.tint = solidColor;
         this.easy.setTexture(options.easy[Math.floor(Math.random() * options.easy.length)]);

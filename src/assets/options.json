@@ -5,6 +5,10 @@
     "upbrickscheckeredbg",
     "swirlcheckeredbg"
   ],
+  "randombg": [
+    "concreterandombg",
+    "squaresrandombg"
+  ],
   "advanced": [
     "acidadvanced",
     "groundadvanced",
