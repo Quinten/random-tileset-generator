@@ -19,8 +19,6 @@ const topColor = ko.observable('ffffff');
 const easyColor = ko.observable('ffffff');
 const attrColor = ko.observable('ffffff');
 
-ko.applyBindings({bgColor, solidColor, randomColor, topColor, easyColor, attrColor});
-
 bgColor.subscribe((newValue) => {
     if (!tileScene) {
         return;
@@ -88,6 +86,31 @@ function randomizeColors() {
     attrColor(palette.splice(Math.floor(Math.random() * palette.length), 1));
 }
 
+const patternOptions = {};
+Object.keys(options).forEach((option) => {
+    if (option !== 'colors') {
+        patternOptions['selected' + option] = ko.observable(options[option][0]);
+        patternOptions['selected' + option].subscribe((newValue) => {
+            if (!tileScene) {
+                return;
+            }
+            tileScene[option].setTexture(newValue);
+            renderPreview();
+        });
+        patternOptions['available' + option] = ko.observableArray(options[option]);
+    }
+});
+
+ko.applyBindings({ ...patternOptions, bgColor, solidColor, randomColor, topColor, easyColor, attrColor});
+
+function randomizePatterns() {
+    Object.keys(options).forEach((option) => {
+        if (option !== 'colors') {
+            patternOptions['selected' + option](options[option][Math.floor(Math.random() * options[option].length)]);
+        }
+    });
+}
+
 let renderTO = 0;
 function renderPreview() {
     clearTimeout(renderTO);
@@ -153,19 +176,8 @@ function createTileset() {
         }
     });
 
-    let button = document.getElementById('generate-button');
-    button.addEventListener('click', () => {
-        randomizeColors();
-        this.checkeredbg.setTexture(options.checkeredbg[Math.floor(Math.random() * options.checkeredbg.length)]);
-        this.randombg.setTexture(options.randombg[Math.floor(Math.random() * options.randombg.length)]);
-        this.advanced.setTexture(options.advanced[Math.floor(Math.random() * options.advanced.length)]);
-        this.easy.setTexture(options.easy[Math.floor(Math.random() * options.easy.length)]);
-        this.checkeredfill.setTexture(options.checkeredfill[Math.floor(Math.random() * options.checkeredfill.length)]);
-        this.randomfill.setTexture(options.randomfill[Math.floor(Math.random() * options.randomfill.length)]);
-        this.topping.setTexture(options.topping[Math.floor(Math.random() * options.topping.length)]);
-        this.attributes.setTexture(options.attributes[Math.floor(Math.random() * options.attributes.length)]);
-    });
     tileScene = this;
+    renderPreview();
 }
 
 const previewConfig = {
@@ -195,5 +207,17 @@ function createPreview() {
     this.map = this.make.tilemap({ key: 'map' });
     this.tiles = this.map.addTilesetImage('tiles', 'tiles');
     this.layer = this.map.createDynamicLayer(0, this.tiles, 0, 0);
+
     previewScene = this;
+    renderPreview();
 }
+
+let colorsButton = document.getElementById('colors-button');
+colorsButton.addEventListener('click', () => {
+    randomizeColors();
+});
+
+let patternsButton = document.getElementById('patterns-button');
+patternsButton.addEventListener('click', () => {
+    randomizePatterns();
+});

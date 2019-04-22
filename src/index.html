@@ -2,35 +2,67 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <style>
+            body {
+                font-family: sans-serif;
+                background: #282828;
+                color: white;
+            }
+            th {
+                text-align: left;
+                font-size: 11px;
+            }
+            input, select {
+                width: 128px;
+            }
+        </style>
     </head>
     <body>
         <div id="tileset"></div>
         <div id="preview"></div>
-        <p><button id="generate-button">GENERATE</button> <a href="#" id="export-button" download="tiles.png">EXPORT</a></p>
         <table>
             <tr>
                 <th>bg</th>
                 <td><input type="text" data-bind="textInput: bgColor" /></td>
+                <td><select data-bind="options: availablecheckeredbg, value: selectedcheckeredbg"></select></td>
+                <td><select data-bind="options: availablerandombg, value: selectedrandombg"></select></td>
             </tr>
             <tr>
                 <th>solid</th>
                 <td><input type="text" data-bind="textInput: solidColor" /></td>
+                <td><select data-bind="options: availableadvanced, value: selectedadvanced"></select></td>
+                <td><select data-bind="options: availablecheckeredfill, value: selectedcheckeredfill"></select></td>
             </tr>
             <tr>
                 <th>fill</th>
                 <td><input type="text" data-bind="textInput: randomColor" /></td>
-            </tr>
-            <tr>
-                <th>top</th>
-                <td><input type="text" data-bind="textInput: topColor" /></td>
+                <td><select data-bind="options: availablerandomfill, value: selectedrandomfill"></select></td>
+                <td></td>
             </tr>
             <tr>
                 <th>easy</th>
                 <td><input type="text" data-bind="textInput: easyColor" /></td>
+                <td><select data-bind="options: availableeasy, value: selectedeasy"></select></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th>top</th>
+                <td><input type="text" data-bind="textInput: topColor" /></td>
+                <td><select data-bind="options: availabletopping, value: selectedtopping"></select></td>
+                <td></td>
             </tr>
             <tr>
                 <th>attr</th>
                 <td><input type="text" data-bind="textInput: attrColor" /></td>
+                <td><select data-bind="options: availableattributes, value: selectedattributes"></select></td>
+                <td></td>
+            </tr>
+            <tr><td colspan="4">&nbsp;</td></tr>
+            <tr>
+                <th>&nbsp;</th>
+                <td><button id="colors-button">Randomize colors</button></td>
+                <td><button id="patterns-button">Randomize patterns</button></td>
+                <td><a href="#" id="export-button" download="tiles.png"><button>Export</button></a></td>
             </tr>
         </table>
     </body>
