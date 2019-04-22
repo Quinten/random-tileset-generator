@@ -37,7 +37,8 @@
   ],
   "topping": [
     "basictopping",
-    "flattopping"
+    "flattopping",
+    "notopping"
   ],
   "colors": [
     "21295c-1b3b6f-065a82-1c7293-9eb3c2",
