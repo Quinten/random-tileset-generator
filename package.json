@@ -33,6 +33,7 @@
     "webpack-merge": "^4.2.1"
   },
   "dependencies": {
+    "knockout": "^3.5.0",
     "phaser": "^3.16.2"
   }
 }

@@ -7,5 +7,31 @@
         <div id="tileset"></div>
         <div id="preview"></div>
         <p><button id="generate-button">GENERATE</button> <a href="#" id="export-button" download="tiles.png">EXPORT</a></p>
+        <table>
+            <tr>
+                <th>bg</th>
+                <td><input type="text" data-bind="textInput: bgColor" /></td>
+            </tr>
+            <tr>
+                <th>solid</th>
+                <td><input type="text" data-bind="textInput: solidColor" /></td>
+            </tr>
+            <tr>
+                <th>fill</th>
+                <td><input type="text" data-bind="textInput: randomColor" /></td>
+            </tr>
+            <tr>
+                <th>top</th>
+                <td><input type="text" data-bind="textInput: topColor" /></td>
+            </tr>
+            <tr>
+                <th>easy</th>
+                <td><input type="text" data-bind="textInput: easyColor" /></td>
+            </tr>
+            <tr>
+                <th>attr</th>
+                <td><input type="text" data-bind="textInput: attrColor" /></td>
+            </tr>
+        </table>
     </body>
 </html>
