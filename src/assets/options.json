@@ -22,13 +22,18 @@
   ],
   "checkeredfill": [
     "albertcheckeredfill",
-    "tildacheckeredfill"
+    "tildacheckeredfill",
+    "concretecheckeredfill",
+    "squarescheckeredfill"
   ],
   "randomfill": [
     "albertrandomfill",
-    "tildarandomfill"
+    "tildarandomfill",
+    "concreterandomfill",
+    "squaresrandomfill"
   ],
   "topping": [
+    "basictopping",
     "boxtopping"
   ],
   "colors": [

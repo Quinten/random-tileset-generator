@@ -42,9 +42,7 @@ function createTileset() {
     this.bg = this.add.image(32, 32, 'plainbg');
     Object.keys(options).forEach((option) => {
         if (option !== 'colors') {
-            options[option].forEach((key) => {
-                this[option] = this.add.image(32, 32, options[option][0]);
-            });
+            this[option] = this.add.image(32, 32, options[option][0]);
         }
     });
 
