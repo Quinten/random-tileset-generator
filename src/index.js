@@ -50,10 +50,11 @@ function createTileset() {
     button.addEventListener('click', () => {
         let palette = options.colors[Math.floor(Math.random() * options.colors.length)].split('-');
         let bgColor = Number('0x' + palette.splice(Math.floor(Math.random() * palette.length), 1));
-        let easyColor = Number('0x' + palette.splice(Math.floor(Math.random() * palette.length), 1));
         let solidColor = Number('0x' + palette.splice(Math.floor(Math.random() * palette.length), 1));
         let topColor = Number('0x' + palette.splice(Math.floor(Math.random() * palette.length), 1));
         let randomColor = Number('0x' + palette.splice(Math.floor(Math.random() * palette.length), 1));
+        let attrColor = Number('0x' + palette.splice(Math.floor(Math.random() * palette.length), 1));
+        let easyColor = (Math.random() > .5) ? randomColor : topColor;
         this.bg.tint = bgColor;
         this.checkeredbg.setTexture(options.checkeredbg[Math.floor(Math.random() * options.checkeredbg.length)]);
         this.checkeredbg.tint = bgColor;
@@ -69,6 +70,8 @@ function createTileset() {
         this.randomfill.tint = randomColor;
         this.topping.setTexture(options.topping[Math.floor(Math.random() * options.topping.length)]);
         this.topping.tint = topColor;
+        this.attributes.setTexture(options.attributes[Math.floor(Math.random() * options.attributes.length)]);
+        this.attributes.tint = attrColor;
 
         if (previewScene) {
             tileset.renderer.snapshot((image) => {
