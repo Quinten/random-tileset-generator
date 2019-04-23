@@ -3,7 +3,8 @@
     "bricks",
     "vbrickcheckeredbg",
     "upbrickscheckeredbg",
-    "swirlcheckeredbg"
+    "swirlcheckeredbg",
+    "squarescheckeredbg"
   ],
   "randombg": [
     "concreterandombg",
