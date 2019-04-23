@@ -3,11 +3,16 @@
     "bricks",
     "vbrickcheckeredbg",
     "upbrickscheckeredbg",
-    "swirlcheckeredbg"
+    "swirlcheckeredbg",
+    "squarescheckeredbg",
+    "tildascheckeredbg",
+    "albertcheckeredbg"
   ],
   "randombg": [
     "concreterandombg",
-    "squaresrandombg"
+    "squaresrandombg",
+    "albertrandombg",
+    "tildarandombg"
   ],
   "advanced": [
     "basicadvanced",
@@ -41,6 +46,7 @@
   "topping": [
     "basictopping",
     "flattopping",
+    "grasstopping",
     "notopping"
   ],
   "colors": [
