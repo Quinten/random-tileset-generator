@@ -34,7 +34,8 @@
     "squaresrandomfill"
   ],
   "attributes": [
-    "boxes"
+    "boxes",
+    "antennas"
   ],
   "topping": [
     "basictopping",
