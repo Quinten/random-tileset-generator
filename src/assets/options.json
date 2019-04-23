@@ -4,11 +4,13 @@
     "vbrickcheckeredbg",
     "upbrickscheckeredbg",
     "swirlcheckeredbg",
-    "squarescheckeredbg"
+    "squarescheckeredbg",
+    "tildascheckeredbg"
   ],
   "randombg": [
     "concreterandombg",
-    "squaresrandombg"
+    "squaresrandombg",
+    "tildarandombg"
   ],
   "advanced": [
     "basicadvanced",
