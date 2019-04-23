@@ -10,6 +10,7 @@
     "squaresrandombg"
   ],
   "advanced": [
+    "basicadvanced",
     "acidadvanced",
     "groundadvanced",
     "voidadvanced"
@@ -33,7 +34,9 @@
     "squaresrandomfill"
   ],
   "attributes": [
-    "boxes"
+    "boxes",
+    "antennas",
+    "mushrooms"
   ],
   "topping": [
     "basictopping",
