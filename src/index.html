@@ -2,11 +2,33 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <title>Random tileset generator</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1, shrink-to-fit=no">
         <style>
             body {
                 font-family: sans-serif;
                 background: #282828;
                 color: white;
+                margin: 0;
+                overflow-x: hidden;
+            }
+            .wrapper {
+                padding: 20px;
+                max-width: 820px;
+                margin: 0 auto;
+            }
+            .wrapper::after {
+                content: "";
+                clear: both;
+                display: table;
+            }
+            .left {
+                width: 320px;
+                float: left;
+                margin-right: 20px;
+            }
+            .right {
+                float: left;
             }
             th {
                 text-align: left;
@@ -15,55 +37,74 @@
             input, select {
                 width: 128px;
             }
+            @media (max-width: 819px) {
+                table, tr, th, td {
+                    display: block;
+                }
+                th {
+                    margin: 16px 0 8px;
+                }
+            }
+            @media (max-width: 374px) {
+                #preview {
+                    margin: 0 -20px;
+                }
+            }
         </style>
     </head>
     <body>
-        <div id="tileset"></div>
-        <div id="preview"></div>
-        <table>
-            <tr>
-                <th>bg</th>
-                <td><input type="text" data-bind="textInput: bgColor" /></td>
-                <td><select data-bind="options: availablecheckeredbg, value: selectedcheckeredbg"></select></td>
-                <td><select data-bind="options: availablerandombg, value: selectedrandombg"></select></td>
-            </tr>
-            <tr>
-                <th>solid</th>
-                <td><input type="text" data-bind="textInput: solidColor" /></td>
-                <td><select data-bind="options: availableadvanced, value: selectedadvanced"></select></td>
-                <td><select data-bind="options: availablecheckeredfill, value: selectedcheckeredfill"></select></td>
-            </tr>
-            <tr>
-                <th>fill</th>
-                <td><input type="text" data-bind="textInput: randomColor" /></td>
-                <td><select data-bind="options: availablerandomfill, value: selectedrandomfill"></select></td>
-                <td></td>
-            </tr>
-            <tr>
-                <th>easy</th>
-                <td><input type="text" data-bind="textInput: easyColor" /></td>
-                <td><select data-bind="options: availableeasy, value: selectedeasy"></select></td>
-                <td></td>
-            </tr>
-            <tr>
-                <th>top</th>
-                <td><input type="text" data-bind="textInput: topColor" /></td>
-                <td><select data-bind="options: availabletopping, value: selectedtopping"></select></td>
-                <td></td>
-            </tr>
-            <tr>
-                <th>attr</th>
-                <td><input type="text" data-bind="textInput: attrColor" /></td>
-                <td><select data-bind="options: availableattributes, value: selectedattributes"></select></td>
-                <td></td>
-            </tr>
-            <tr><td colspan="4">&nbsp;</td></tr>
-            <tr>
-                <th>&nbsp;</th>
-                <td><button id="colors-button">Randomize colors</button></td>
-                <td><button id="patterns-button">Randomize patterns</button></td>
-                <td><a href="#" id="export-button" download="tiles.png"><button>Export</button></a></td>
-            </tr>
-        </table>
+        <div class="wrapper">
+            <div class="left">
+                <div id="tileset"></div>
+                <div id="preview"></div>
+            </div>
+            <div class="right">
+                <table>
+                    <tr>
+                        <th>bg</th>
+                        <td><input type="text" data-bind="textInput: bgColor" /></td>
+                        <td><select data-bind="options: availablecheckeredbg, value: selectedcheckeredbg"></select></td>
+                        <td><select data-bind="options: availablerandombg, value: selectedrandombg"></select></td>
+                    </tr>
+                    <tr>
+                        <th>solid</th>
+                        <td><input type="text" data-bind="textInput: solidColor" /></td>
+                        <td><select data-bind="options: availableadvanced, value: selectedadvanced"></select></td>
+                        <td><select data-bind="options: availablecheckeredfill, value: selectedcheckeredfill"></select></td>
+                    </tr>
+                    <tr>
+                        <th>fill</th>
+                        <td><input type="text" data-bind="textInput: randomColor" /></td>
+                        <td><select data-bind="options: availablerandomfill, value: selectedrandomfill"></select></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>easy</th>
+                        <td><input type="text" data-bind="textInput: easyColor" /></td>
+                        <td><select data-bind="options: availableeasy, value: selectedeasy"></select></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>top</th>
+                        <td><input type="text" data-bind="textInput: topColor" /></td>
+                        <td><select data-bind="options: availabletopping, value: selectedtopping"></select></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>attr</th>
+                        <td><input type="text" data-bind="textInput: attrColor" /></td>
+                        <td><select data-bind="options: availableattributes, value: selectedattributes"></select></td>
+                        <td></td>
+                    </tr>
+                    <tr><td colspan="4">&nbsp;</td></tr>
+                    <tr>
+                        <th>&nbsp;</th>
+                        <td><button id="colors-button">Randomize colors</button></td>
+                        <td><button id="patterns-button">Randomize patterns</button></td>
+                        <td><a href="#" id="export-button" download="tiles.png"><button>Export</button></a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
     </body>
 </html>
