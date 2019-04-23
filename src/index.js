@@ -221,3 +221,9 @@ let patternsButton = document.getElementById('patterns-button');
 patternsButton.addEventListener('click', () => {
     randomizePatterns();
 });
+
+let everythingButton = document.getElementById('everything-button');
+everythingButton.addEventListener('click', () => {
+    randomizeColors();
+    randomizePatterns();
+});
