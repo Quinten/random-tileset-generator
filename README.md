@@ -36,3 +36,5 @@ Make a build
 ```
 npm run build
 ```
+
+The code is built with [Phaser 3](http://phaser.io/) and [Knockout](https://knockoutjs.com/)
