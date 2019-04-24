@@ -4,7 +4,7 @@
   "description": "Generate 8x8 tilesets",
   "main": "src/index.js",
   "scripts": {
-    "deploy": "git subtree push --prefix pub/ origin gh-pages",
+    "deploy": "git subtree push --prefix pub/ origin gh-pages && butler push pub supernapie/random-tileset-generator:HTML",
     "build": "webpack --config webpack/prod.js ",
     "start": "webpack-dev-server --config webpack/base.js --open"
   },
