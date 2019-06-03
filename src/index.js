@@ -14,10 +14,7 @@ let cropContext = crop.getContext('2d');
 
 const bgColor = ko.observable('ffffff');
 const solidColor = ko.observable('ffffff');
-const randomColor = ko.observable('ffffff');
 const topColor = ko.observable('ffffff');
-const easyColor = ko.observable('ffffff');
-const attrColor = ko.observable('ffffff');
 
 bgColor.subscribe((newValue) => {
     if (!tileScene) {
@@ -40,38 +37,14 @@ solidColor.subscribe((newValue) => {
     renderPreview();
 });
 
-randomColor.subscribe((newValue) => {
-    if (!tileScene) {
-        return;
-    }
-    let color = Number('0x' + newValue);
-    tileScene.randomfill.tint = color;
-    renderPreview();
-});
-
 topColor.subscribe((newValue) => {
     if (!tileScene) {
         return;
     }
     let color = Number('0x' + newValue);
     tileScene.topping.tint = color;
-    renderPreview();
-});
-
-easyColor.subscribe((newValue) => {
-    if (!tileScene) {
-        return;
-    }
-    let color = Number('0x' + newValue);
+    tileScene.randomfill.tint = color;
     tileScene.easy.tint = color;
-    renderPreview();
-});
-
-attrColor.subscribe((newValue) => {
-    if (!tileScene) {
-        return;
-    }
-    let color = Number('0x' + newValue);
     tileScene.attributes.tint = color;
     renderPreview();
 });
@@ -80,10 +53,7 @@ function randomizeColors() {
     let palette = options.colors[Math.floor(Math.random() * options.colors.length)].split('-');
     bgColor(palette.splice(Math.floor(Math.random() * palette.length), 1));
     solidColor(palette.splice(Math.floor(Math.random() * palette.length), 1));
-    randomColor(palette.splice(Math.floor(Math.random() * palette.length), 1));
     topColor(palette.splice(Math.floor(Math.random() * palette.length), 1));
-    easyColor((Math.random() > .5) ? randomColor() : topColor());
-    attrColor(palette.splice(Math.floor(Math.random() * palette.length), 1));
 }
 
 const patternOptions = {};
@@ -101,7 +71,7 @@ Object.keys(options).forEach((option) => {
     }
 });
 
-let bindings = { ...patternOptions, bgColor, solidColor, randomColor, topColor, easyColor, attrColor};
+let bindings = { ...patternOptions, bgColor, solidColor, topColor};
 ko.applyBindings(bindings);
 
 function randomizePatterns() {
