@@ -101,7 +101,8 @@ Object.keys(options).forEach((option) => {
     }
 });
 
-ko.applyBindings({ ...patternOptions, bgColor, solidColor, randomColor, topColor, easyColor, attrColor});
+let bindings = { ...patternOptions, bgColor, solidColor, randomColor, topColor, easyColor, attrColor};
+ko.applyBindings(bindings);
 
 function randomizePatterns() {
     Object.keys(options).forEach((option) => {
@@ -135,8 +136,38 @@ function renderPreview() {
                 }
             }, 500);
         });
+        generateUrl();
     }, 500);
 }
+
+function parseUrl() {
+    let search = location.search.substring(1);
+    let params = JSON.parse('{"' + search.replace(/&/g, '","').replace(/=/g,'":"') + '"}', function (key, value) { return key === "" ? value : decodeURIComponent(value) });
+    Object.keys(bindings).forEach(function (key,index) {
+        if (!ko.isObservableArray(bindings[key]) && params[key]) {
+            bindings[key](params[key]);
+        }
+    });
+}
+
+function generateUrl() {
+    let params = '?';
+    Object.keys(bindings).forEach(function (key,index) {
+        if (!ko.isObservableArray(bindings[key])) {
+            params += key + '=' + bindings[key]() + '&';
+        }
+    });
+    params = params.substr(0, params.length - 1);
+    if (params !== location.search) {
+        history.pushState({}, document.title, params);
+    }
+    document.getElementById('share-button').href = 'https://quinten.github.io/random-tileset-generator/' + params;
+}
+
+window.onpopstate = function () {
+    parseUrl();
+    renderPreview();
+};
 
 const tilesetConfig = {
     type: Phaser.AUTO,
@@ -177,6 +208,7 @@ function createTileset() {
     });
 
     tileScene = this;
+    parseUrl();
     renderPreview();
 }
 
