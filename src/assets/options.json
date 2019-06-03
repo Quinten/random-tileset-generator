@@ -18,7 +18,9 @@
     "basicadvanced",
     "acidadvanced",
     "groundadvanced",
-    "voidadvanced"
+    "groundadvancedlite",
+    "voidadvanced",
+    "voidadvancedlite"
   ],
   "easy": [
     "basiceasy",
