@@ -9,7 +9,7 @@ let tileScene;
 
 let crop = document.createElement('canvas');
 crop.width = 64;
-crop.height = 64;
+crop.height = 168;
 let cropContext = crop.getContext('2d');
 
 const bgColor = ko.observable('ffffff');
@@ -24,6 +24,7 @@ bgColor.subscribe((newValue) => {
     tileScene.bg.tint = color;
     tileScene.checkeredbg.tint = color;
     tileScene.randombg.tint = color;
+    tileScene.bgFixed.tint = color;
     renderPreview();
 });
 
@@ -34,6 +35,7 @@ solidColor.subscribe((newValue) => {
     let color = Number('0x' + newValue);
     tileScene.advanced.tint = color;
     tileScene.checkeredfill.tint = color;
+    tileScene.solidFixed.tint = color;
     renderPreview();
 });
 
@@ -46,6 +48,7 @@ topColor.subscribe((newValue) => {
     tileScene.randomfill.tint = color;
     tileScene.easy.tint = color;
     tileScene.attributes.tint = color;
+    tileScene.topFixed.tint = color;
     renderPreview();
 });
 
@@ -143,10 +146,11 @@ const tilesetConfig = {
     type: Phaser.AUTO,
     parent: 'tileset',
     pixelArt: true,
+    transparent: true,
     scale: {
         mode: Phaser.Scale.NONE,
         width: 64,
-        height: 65,
+        height: 169,
         zoom: 2
     },
     scene: {
@@ -167,6 +171,10 @@ function preloadTileset() {
             });
         }
     });
+    this.load.image('bg-fixed', 'assets/bg-fixed.png');
+    this.load.image('solid-fixed', 'assets/solid-fixed.png');
+    this.load.image('fg-fixed', 'assets/fg-fixed.png');
+    this.load.image('top-fixed', 'assets/top-fixed.png');
 }
 
 function createTileset() {
@@ -176,6 +184,10 @@ function createTileset() {
             this[option] = this.add.image(32, 32, options[option][0]);
         }
     });
+    this.bgFixed = this.add.image(32, 84, 'bg-fixed');
+    this.solidFixed = this.add.image(32, 84, 'solid-fixed');
+    this.fgFixed = this.add.image(32, 84, 'fg-fixed');
+    this.topFixed = this.add.image(32, 84, 'top-fixed');
 
     tileScene = this;
     parseUrl();
