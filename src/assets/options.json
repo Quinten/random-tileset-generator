@@ -9,6 +9,10 @@
     "albertcheckeredbg"
   ],
   "randombg": [
+    "bricksrandom",
+    "vbrickrandombg",
+    "upbricksrandombg",
+    "swirlrandombg",
     "concreterandombg",
     "squaresrandombg",
     "albertrandombg",
