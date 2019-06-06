@@ -31,7 +31,8 @@
     "basiceasy",
     "acideasy",
     "groundeasy",
-    "voideasy"
+    "voideasy",
+    "triangleseasy"
   ],
   "checkeredfill": [
     "albertcheckeredfill",
