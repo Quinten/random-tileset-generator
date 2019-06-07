@@ -38,13 +38,15 @@
     "albertcheckeredfill",
     "tildacheckeredfill",
     "concretecheckeredfill",
-    "squarescheckeredfill"
+    "squarescheckeredfill",
+    "trianglescheckeredfill"
   ],
   "randomfill": [
     "albertrandomfill",
     "tildarandomfill",
     "concreterandomfill",
-    "squaresrandomfill"
+    "squaresrandomfill",
+    "trianglesrandomfill"
   ],
   "attributes": [
     "boxes",
