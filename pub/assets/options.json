@@ -4,6 +4,7 @@
     "vbrickcheckeredbg",
     "upbrickscheckeredbg",
     "swirlcheckeredbg",
+    "swirlcheckeredbgalt",
     "squarescheckeredbg",
     "tildascheckeredbg",
     "albertcheckeredbg"
@@ -11,6 +12,7 @@
   "randombg": [
     "concreterandombg",
     "squaresrandombg",
+    "trianglesrandombg",
     "albertrandombg",
     "tildarandombg"
   ],
@@ -18,25 +20,30 @@
     "basicadvanced",
     "acidadvanced",
     "groundadvanced",
-    "voidadvanced"
+    "groundadvancedlite",
+    "voidadvanced",
+    "voidadvancedlite"
   ],
   "easy": [
     "basiceasy",
     "acideasy",
     "groundeasy",
-    "voideasy"
+    "voideasy",
+    "triangleseasy"
   ],
   "checkeredfill": [
     "albertcheckeredfill",
     "tildacheckeredfill",
     "concretecheckeredfill",
-    "squarescheckeredfill"
+    "squarescheckeredfill",
+    "trianglescheckeredfill"
   ],
   "randomfill": [
     "albertrandomfill",
     "tildarandomfill",
     "concreterandomfill",
-    "squaresrandomfill"
+    "squaresrandomfill",
+    "trianglesrandomfill"
   ],
   "attributes": [
     "boxes",
