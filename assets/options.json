@@ -22,14 +22,16 @@
     "groundadvanced",
     "groundadvancedlite",
     "voidadvanced",
-    "voidadvancedlite"
+    "voidadvancedlite",
+    "rockadvanced"
   ],
   "easy": [
     "basiceasy",
     "acideasy",
     "groundeasy",
     "voideasy",
-    "triangleseasy"
+    "triangleseasy",
+    "rockeasy"
   ],
   "checkeredfill": [
     "albertcheckeredfill",
@@ -48,12 +50,15 @@
   "attributes": [
     "boxes",
     "antennas",
-    "mushrooms"
+    "mushrooms",
+    "grassattributes",
+    "noattributes"
   ],
   "topping": [
     "basictopping",
     "flattopping",
     "grasstopping",
+    "grasssimpletopping",
     "notopping"
   ],
   "colors": [
