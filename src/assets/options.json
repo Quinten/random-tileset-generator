@@ -43,17 +43,21 @@
     "tildarandomfill",
     "concreterandomfill",
     "squaresrandomfill",
-    "trianglesrandomfill"
+    "trianglesrandomfill",
+    "notopping"
   ],
   "attributes": [
     "boxes",
     "antennas",
-    "mushrooms"
+    "mushrooms",
+    "grassattributes",
+    "noattributes"
   ],
   "topping": [
     "basictopping",
     "flattopping",
     "grasstopping",
+    "grasssimpletopping",
     "notopping"
   ],
   "colors": [
