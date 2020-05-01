@@ -22,14 +22,16 @@
     "groundadvanced",
     "groundadvancedlite",
     "voidadvanced",
-    "voidadvancedlite"
+    "voidadvancedlite",
+    "rockadvanced"
   ],
   "easy": [
     "basiceasy",
     "acideasy",
     "groundeasy",
     "voideasy",
-    "triangleseasy"
+    "triangleseasy",
+    "rockeasy"
   ],
   "checkeredfill": [
     "albertcheckeredfill",
@@ -43,8 +45,7 @@
     "tildarandomfill",
     "concreterandomfill",
     "squaresrandomfill",
-    "trianglesrandomfill",
-    "notopping"
+    "trianglesrandomfill"
   ],
   "attributes": [
     "boxes",
