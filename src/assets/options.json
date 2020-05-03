@@ -14,7 +14,8 @@
     "squaresrandombg",
     "trianglesrandombg",
     "albertrandombg",
-    "tildarandombg"
+    "tildarandombg",
+    "electrorandombg"
   ],
   "advanced": [
     "basicadvanced",
@@ -38,7 +39,8 @@
     "tildacheckeredfill",
     "concretecheckeredfill",
     "squarescheckeredfill",
-    "trianglescheckeredfill"
+    "trianglescheckeredfill",
+    "screwscheckeredfill"
   ],
   "randomfill": [
     "albertrandomfill",
